@@ -4,20 +4,27 @@ import java.util.Arrays;
 
 public class Solution {
     public void reverseString(char[] s) {
-        printReverse(0, s);
-        System.out.print(Arrays.toString(s));
+        if (s != null && s.length > 0) {
+            printReverse(0, s);
+            System.out.print(Arrays.toString(s));
+        } else {
+            System.out.print(Arrays.toString(new char[]{}));
+        }
     }
 
     private void printReverse(int index, char[] s) {
-        if (s != null && s.length <= index) {
+        if (s.length <= index) {
             return;
         }
         printReverse(index + 1, s);
-        swap(s, index);
+
+        if ((s.length - 1) - index > index) {
+            swap(s, index);
+        }
     }
 
     private void swap(char[] s, int index) {
-        if ((s.length - 1) - index > index) {
+        if ((s[index] != s[(s.length - 1) - index])) {
             char temp = s[index];
             s[index] = s[(s.length - 1) - index];
             s[(s.length - 1) - index] = temp;
